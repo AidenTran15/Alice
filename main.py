@@ -116,11 +116,37 @@ if __name__ == '__main__':
             elif "cloth" in query:
                 speak('what brand do you want')
                 if "gucci" in query:
-                    speak('Yes sir')
+                    print('Yes sir')
                     webbrowser.open('www.gucci.com')
-                elif "h and m" in query:
-                    speak('Yes Sir')
-                    webbrowser.open('www.hm.com')
+                else:
+                    continue
 
+        
         else:
-            query
+            query = query
+            speak('Searching...')
+            try:
+                try:
+                    res = client.query(query)
+                    results = next(res.results).text
+                    speak('WOLFRAM-ALPHA says - ')
+                    speak('Got it.')
+                    speak(results)
+
+                except:
+                    results = wikipedia.summary(query, sentences=2)
+                    speak('Got it.')
+                    speak('WIKIPEDIA says - ')
+                    speak(results)
+
+            except:
+                webbrowser.open('www.google.com')
+
+
+
+
+        speak('Next Command! Sir!')
+        
+
+
+        
