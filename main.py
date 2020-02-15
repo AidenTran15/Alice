@@ -80,11 +80,18 @@ if __name__ == '__main__':
 
         query = myCommand()
         query = query.lower()
+                        # -- GREETING --
+            
+        if "hello" or "good" in query:
+            speak(f'Hello {user}')
         
+        elif "how are you" in query:
+            speak('I am fine, I can do 100 pushs up if I have hand') 
+
 
                         # --OPEN WEBSITE--
 
-        if "open youtube" in query:
+        elif "open youtube" in query:
             speak('yes sir')
             webbrowser.open('www.youtube.com')
 
@@ -146,7 +153,7 @@ if __name__ == '__main__':
 
 
         speak('Next Command! Sir!')
-        
+
 
 
         
