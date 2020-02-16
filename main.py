@@ -11,7 +11,6 @@ import sys
 import requests
 import json
 
-user = 'Aiden'
 
 engine = pyttsx3.init('sapi5')
 
@@ -21,26 +20,26 @@ voices = engine.getProperty('voices')
 engine.setProperty('voice', voices[len(voices)-1].id)
 
 def speak(audio):
-    print('Jason: ' + audio )
+    print('Alice: ' + audio )
     engine.say(audio)
     engine.runAndWait()
 
 def greetMe():
     currentH = int(datetime.datetime.now().hour)
     if currentH >= 0 and currentH  < 12:
-        print(f"Good Morning {user} !")
+        speak(f"Good Morning Aiden !")
     
     if currentH >= 12 and currentH < 18:
-        print(f"Good Evening {user} !")
+        speak(f"Good Evening Aiden !")
     
     if currentH > 18 and currentH != 0:
-        print(f"Good evening {user} !")
+        speak(f"Good evening Aiden  !")
 
 greetMe()
 
 
-speak(f"Hello {user}, I am your digital assistant, my name is Jason")
-speak(f"How may I help you {user}")
+speak(f"Hello Aiden, I am your digital assistant, my name is Alice")
+speak(f"How may I help you Aiden ")
 
 
 def myCommand():
@@ -55,7 +54,7 @@ def myCommand():
         print('User: ' + query + '\n')
 
     except sr.UnknownValueError:
-        speak(f"Sorry {user}! I didnt get that! Try typing the command!")
+        speak("Sorry Aiden ! I didnt get that! Try typing the command!")
         query = str(input('Command: '))
 
     return query
@@ -80,24 +79,20 @@ if __name__ == '__main__':
 
         query = myCommand()
         query = query.lower()
-                        # -- GREETING --
+                
             
-        if "hello" or "good" in query:
-            speak(f'Hello {user}')
-        
-        elif "how are you" in query:
-            speak('I am fine, I can do 100 pushs up if I have hand') 
-
-
-                        # --OPEN WEBSITE--
-
-        elif "open youtube" in query:
+        if "open youtube" in query:
             speak('yes sir')
             webbrowser.open('www.youtube.com')
-
         elif "open instagram" in query:
             speak('yes sir')
             webbrowser.open('www.instagram.com')
+        
+       # elif "hello" or "good" in query:
+        #    speak('Hello Aiden')
+        
+        elif "how are you" in query:
+            speak('I am fine, I can do 100 pushs up if I have hand') 
 
         elif "open facebook" in query:
             speak('yes sir')
@@ -125,9 +120,13 @@ if __name__ == '__main__':
                 if "gucci" in query:
                     print('Yes sir')
                     webbrowser.open('www.gucci.com')
-                else:
-                    continue
+            
+        
 
+        
+        elif "bye" in query:
+            speak('good bye Aiden')
+            sys.exit()
         
         else:
             query = query
