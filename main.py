@@ -121,9 +121,15 @@ if __name__ == '__main__':
                     print('Yes sir')
                     webbrowser.open('www.gucci.com')
             
-        
+        elif 'weather' in query and 'now' in query or 'today' in query:
+            json_data = getWeatherJSONData()
 
-        
+            summary = json_data['currently']['summary']
+            # Calculate F to C
+            temC = (json_data['currently']['temperature']-32)*5/9
+            speak("the weather is {} and the temperature is {} degree celcius".format(summary,str(round(temC,2))))
+
+
         elif "bye" in query:
             speak('good bye Aiden')
             sys.exit()
