@@ -77,22 +77,35 @@ if __name__ == '__main__':
 
     while True:
 
+        user = "Aiden"
+
         query = myCommand()
         query = query.lower()
-                
+
+
+        #                       ----- GREETING -----
+
+        if "hello" or "good" in query:
+            speak('Hello {}'.format(user))
+
+        elif "how are you" in query or "how are you going":
+            speak('I am fine, I can do 100 pushs up if I have hand') 
+
+
+
+
+        #                       ----- OPEN WEBSITE -----
+               
             
-        if "open youtube" in query:
+        elif "open youtube" in query:
             speak('yes sir')
             webbrowser.open('www.youtube.com')
+
         elif "open instagram" in query:
             speak('yes sir')
             webbrowser.open('www.instagram.com')
-        
-       # elif "hello" or "good" in query:
-        #    speak('Hello Aiden')
-        
-        elif "how are you" in query:
-            speak('I am fine, I can do 100 pushs up if I have hand') 
+                
+
 
         elif "open facebook" in query:
             speak('yes sir')
@@ -121,6 +134,11 @@ if __name__ == '__main__':
                     print('Yes sir')
                     webbrowser.open('www.gucci.com')
             
+
+
+        #                           ----- WEATHER NOW -----
+
+
         elif 'weather' in query and 'now' in query or 'today' in query:
             json_data = getWeatherJSONData()
 
@@ -130,8 +148,23 @@ if __name__ == '__main__':
             speak("the weather is {} and the temperature is {} degree celcius".format(summary,str(round(temC,2))))
 
 
+        #                           ----- WEATHER TOMMOROW -----
+
+        elif "weather tommorow" in query:
+            json_data = getWeatherJSONData()
+
+            summary = json_data['daily']['data'][0]['summary']
+            # calculate F to C
+            temMinC = (json_data['daily']['data'][0]['temperatureMin']-32)*5/9
+            temMaxC = (json_data['daily']['data'][0]['temperatureMax']-32)*5/9
+            speak("the weather tommorow is {} and the temperature is about {} to {} degree celcius".format(summary,str(round(temMinC,2)),str(round(temMaxC))))
+
+
+        #                           ----- QUIT PROGRAM -----
+
+
         elif "bye" in query:
-            speak('good bye Aiden')
+            speak('good bye {}'.format(user))
             sys.exit()
         
         else:
