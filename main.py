@@ -93,7 +93,6 @@ if __name__ == '__main__':
 
 
 
-
         #                       ----- OPEN WEBSITE -----
                
             
@@ -105,8 +104,6 @@ if __name__ == '__main__':
             speak('yes sir')
             webbrowser.open('www.instagram.com')
                 
-
-
         elif "open facebook" in query:
             speak('yes sir')
             webbrowser.open('www.facebook.com')
@@ -135,8 +132,8 @@ if __name__ == '__main__':
                     webbrowser.open('www.gucci.com')
             
 
-
         #                           ----- WEATHER NOW -----
+
 
 
         elif 'weather' in query and 'now' in query or 'today' in query:
@@ -163,10 +160,24 @@ if __name__ == '__main__':
         #                           ----- QUIT PROGRAM -----
 
 
-        elif "bye" in query:
+        elif "bye" in query or "nothing" in query:
             speak('good bye {}'.format(user))
             sys.exit()
+
         
+        #                           ----- FUNNY ACTION -----
+
+        elif "what are you doing" in query:
+            speak('I am waiting for your command')
+        
+        elif "do you love me " in query:
+            speak('do you love me , if you love me I will love you')
+
+
+
+        #                           ----- INTELLIGENT COMMAND ------
+
+
         else:
             query = query
             speak('Searching...')
